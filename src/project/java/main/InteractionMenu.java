@@ -69,5 +69,14 @@ public class InteractionMenu {
         double nota = scanner.nextDouble();
         scanner.nextLine();
 
+        try (Connection conn = InterconnectingDB.conectar()) {
+            String sql = "INSERT INTO notas (aluno_id, nota) VALUES (?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, alunoId);
+                stmt.setDouble(2, nota);
+                stmt.executeUpdate();
+                System.out.println("Nota cadastrada com sucesso!");
+            }
+
 
 
