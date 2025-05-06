@@ -102,6 +102,15 @@ public class InteractionMenu {
                     System.out.printf("ID: %d | Aluno: %-20s | Média: %.2f%n",
                             id, nome, media);
                 }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar médias: " + e.getMessage());
+
+
+        }
+    }
+
+}
 
 
 
