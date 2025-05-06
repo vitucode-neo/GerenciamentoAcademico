@@ -4,6 +4,7 @@ import project.java.database.InterconnectingDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Locale;
 import java.util.Scanner;
@@ -89,6 +90,19 @@ public class InteractionMenu {
             String sql = "SELECT alunos.id, alunos.nome, AVG(notas.nota) AS media " +
                     "FROM alunos JOIN notas ON alunos.id = notas.aluno_id " +
                     "GROUP BY alunos.id, alunos.nome";
+
+            try (PreparedStatement stmt = conn.prepareStatement(sql);
+                 ResultSet rs = stmt.executeQuery()) {
+
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String nome = rs.getString("nome");
+                    double media = rs.getDouble("media");
+
+                    System.out.printf("ID: %d | Aluno: %-20s | Média: %.2f%n",
+                            id, nome, media);
+                }
+
 
 
 
