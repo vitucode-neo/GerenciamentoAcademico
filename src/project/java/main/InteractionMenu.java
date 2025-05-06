@@ -77,6 +77,11 @@ public class InteractionMenu {
                 stmt.executeUpdate();
                 System.out.println("Nota cadastrada com sucesso!");
             }
+        } catch (SQLException e) {
+            System.out.println("Erro ao cadastrar nota: " + e.getMessage());
+        }
+    }
+
 
 
 
