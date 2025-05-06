@@ -4,6 +4,7 @@ import project.java.database.InterconnectingDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -56,4 +57,9 @@ public class InteractionMenu {
                 stmt.executeUpdate();
                 System.out.println("Aluno cadastrado com sucesso!");
             }
+        } catch (SQLException e) {
+            System.out.println("Erro ao cadastrar aluno: " + e.getMessage());
+        }
+    }
+
 
