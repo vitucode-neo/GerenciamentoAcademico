@@ -62,4 +62,12 @@ public class InteractionMenu {
         }
     }
 
+    private static void adicionarNota(Scanner scanner) {
+        System.out.print("\nDigite o ID do aluno: ");
+        int alunoId = scanner.nextInt();
+        System.out.print("Digite a nota do aluno: ");
+        double nota = scanner.nextDouble();
+        scanner.nextLine();
+
+
 
