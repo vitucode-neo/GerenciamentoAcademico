@@ -4,6 +4,8 @@ package project.java.services;
 import project.java.database.InterconnectingDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Entities {
@@ -37,7 +39,21 @@ public class Entities {
             System.out.println("Erro ao cadastrar nota: " + e.getMessage());
         }
     }
-
-
-
+    public static void listarMedias() {
+        try (Connection conn = InterconnectingDB.conectar()) {
+            String sql = "SELECT alunos.nome, AVG(notas.nota) AS media FROM alunos " +
+                    "JOIN notas ON alunos.id = notas.aluno_id " +
+                    "GROUP BY alunos.id";
+            try (PreparedStatement stmt = conn.prepareStatement(sql);
+                 ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    String nomeAluno = rs.getString("nome");
+                    double media = rs.getDouble("media");
+                    System.out.println("Aluno: " + nomeAluno + " | Média: " + media);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar as médias: " + e.getMessage());
+        }
+    }
 }
