@@ -82,6 +82,14 @@ public class InteractionMenu {
         }
     }
 
+    private static void listarMedias() {
+        System.out.println("\n=== MÉDIAS DOS ALUNOS ===");
+
+        try (Connection conn = InterconnectingDB.conectar()) {
+            String sql = "SELECT alunos.id, alunos.nome, AVG(notas.nota) AS media " +
+                    "FROM alunos JOIN notas ON alunos.id = notas.aluno_id " +
+                    "GROUP BY alunos.id, alunos.nome";
+
 
 
 
