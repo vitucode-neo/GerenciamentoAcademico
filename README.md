@@ -10,8 +10,11 @@ IntelliJ IDEA – Ambiente de desenvolvimento integrado (IDE).
 Funcionalidades:
 
 Cadastro e listagem de alunos.
+
 Gerenciamento de cursos e disciplinas.
+
 Registro e consulta de notas.
+
 Relatórios simples para visualização dos dados.
 
 bjetivo
