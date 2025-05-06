@@ -1,5 +1,9 @@
 package project.java.main;
 
+import project.java.database.InterconnectingDB;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -41,5 +45,15 @@ public class InteractionMenu {
             }
         }
     }
+    private static void cadastrarAluno(Scanner scanner) {
+        System.out.print("\nDigite o nome do aluno: ");
+        String nome = scanner.nextLine();
 
+        try (Connection conn = InterconnectingDB.conectar()) {
+            String sql = "INSERT INTO alunos (nome) VALUES (?)";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, nome);
+                stmt.executeUpdate();
+                System.out.println("Aluno cadastrado com sucesso!");
+            }
 
