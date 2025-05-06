@@ -3,8 +3,11 @@ Este projeto é um sistema de gerenciamento acadêmico desenvolvido em Java, com
 Tecnologias Utilizadas:
 
 Java 17 – Linguagem principal do projeto.
+
 MySQL – Banco de dados relacional para armazenamento das informações.
+
 JDBC (mysql-connector-j) – Conexão entre Java e MySQL.
+
 IntelliJ IDEA – Ambiente de desenvolvimento integrado (IDE).
 
 Funcionalidades:
